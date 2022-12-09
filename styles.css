@@ -1,0 +1,23 @@
+.maindiv {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+.divborder {
+    display: flex;
+    width: 20%;
+}
+.divform {
+    display: flex;
+    width: 60%;
+}
+#text {
+    width: 100%;
+}
+form {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    display: flex;
+    width: 100%;
+    min-height: 400px;
+}
