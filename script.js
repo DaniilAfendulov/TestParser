@@ -11,21 +11,21 @@ function parse() {
         .split("data-original-title=")
         .map(s => s
             .split('\">')[0]
-            .replace('<br>', '\n')
-            .replace('&nbsp', ' ')
-            .replace('&quot;', '\"')
+            .replaceAll('<br>', '\n')
+            .replaceAll('&nbsp', ' ')
+            .replaceAll('&quot;', '\"')
             );
+    parts.shift();
     for (let i = 0; i < parts.length; i++) {
         if (parts[i] && parts[i].includes('Правильный ответ'))
         {
             parts[i] = parts[i].split('Ответил')[0] + 'Правильный ответ' + parts[i].split('Правильный ответ')[1];
         }
     }
-    console.log(parts);
     var res = "";
     for (let i = 0; i < parts.length; i++) {
         res += '\n';
-        res += i + '. ';
+        res += (1+i) + '. ';
         var answers = [];
         var t = parts[i].split('Правильный ответ:');
         if (t.length === 0 || t.length === 1)
@@ -47,6 +47,6 @@ function parse() {
             res += ans + '\n';
         });
     }
-    console.log(res);
+
     document.querySelector("#text").value = res;
 }
